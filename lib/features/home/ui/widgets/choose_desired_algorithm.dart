@@ -4,6 +4,7 @@ import 'package:network_security_algorithms_app/features/home/ui/widgets/algorit
 
 import '../../../../core/theme/styles.dart';
 import '../../../Euclidean/euclidean_screen.dart';
+import '../../../Simplified DES/simplified_des_screen.dart';
 
 class ChooseDesiredAlgorithm extends StatelessWidget {
   const ChooseDesiredAlgorithm({super.key});
@@ -18,6 +19,7 @@ class ChooseDesiredAlgorithm extends StatelessWidget {
           style: Styles.font22SoftWhiteBold,
         ),
         AlgorithmsButton(
+          title: "Ceaser Cypher",
           onPress: () {
             Navigator.push(
               context,
@@ -26,16 +28,26 @@ class ChooseDesiredAlgorithm extends StatelessWidget {
               ),
             );
           },
-          title: "Ceaser Cypher",
         ),
         AlgorithmsButton(
+          title: "Euclidean",
           onPress: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const EuclideanScreen()),
             );
           },
-          title: "Euclidean",
+        ),
+        AlgorithmsButton(
+          onPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SimplifiedDESScreen(),
+              ),
+            );
+          },
+          title: "Simplified DES",
         ),
       ],
     );

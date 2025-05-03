@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:network_security_algorithms_app/core/theme/styles.dart';
+import 'package:network_security_algorithms_app/core/widgets/custom_text_button.dart';
 
 import '../../core/widgets/custom_text_field.dart';
 import 'ceaser_cypher_algorithm.dart';
@@ -16,10 +17,11 @@ class CeaserCypherScreenState extends State<CeaserCypherScreen> {
   final TextEditingController keyController = TextEditingController();
   String _outputText = "";
 
-  void _processText() {
+  void _processText({bool isDecrypt = false}) {
     String encryptedText = caesarCipherAlgorithm(
       text: textController.text,
       key: keyController.text,
+      isDecrypt: isDecrypt,
     );
     setState(() {
       _outputText = encryptedText.toUpperCase();
@@ -60,24 +62,15 @@ class CeaserCypherScreenState extends State<CeaserCypherScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              Center(
-                child: ElevatedButton(
-                  onPressed: _processText,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 15,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  CustomTextButton(onPress: _processText, title: "Encrypt"),
+                  CustomTextButton(
+                    onPress: () => _processText(isDecrypt: true),
+                    title: "Decrypt",
                   ),
-                  child: const Text(
-                    "Process",
-                    style: Styles.font18SoftWhiteSemiBold,
-                  ),
-                ),
+                ],
               ),
               const SizedBox(height: 20),
               const Text(

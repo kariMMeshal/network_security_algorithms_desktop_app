@@ -3,6 +3,7 @@ import 'package:network_security_algorithms_app/core/routing/routes.dart';
 import 'package:network_security_algorithms_app/features/Euclidean/euclidean_screen.dart';
 
 import '../../features/Ceaser Cypher/ceaser_cypher_screen.dart';
+import '../../features/Simplified DES/simplified_des_screen.dart';
 import '../../features/home/ui/home_screen.dart';
 
 class AppRouter {
@@ -15,8 +16,11 @@ class AppRouter {
           builder: (context) => const CeaserCypherScreen(),
         );
       case Routes.euclideanScreen:
+        return MaterialPageRoute(builder: (context) => const EuclideanScreen());
+
+      case Routes.simplifiedDesScreen:
         return MaterialPageRoute(
-          builder: (context) => const EuclideanScreen(),
+          builder: (context) => const SimplifiedDESScreen(),
         );
       default:
         return MaterialPageRoute(
